@@ -11,6 +11,7 @@ class Mat
 
 public:
 	Mat(int numOfLines, int numOfCols);
+	~Mat();
 	int getRowsNum() const;
 	int getColumnsNum() const;
 	int getElement(int rowIndex, int colIndex) const;

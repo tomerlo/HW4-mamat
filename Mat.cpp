@@ -27,6 +27,23 @@ Mat::Mat(int numOfLines, int numOfCols)
 };
 
 //*****************************************************************************************************
+//* function name: ~Mat
+//* Description: Mat destructor (frees dynamic memory allocation)
+//* Parameters:None
+//* Return Value:None
+//*****************************************************************************************************
+Mat::~Mat()
+{
+    int i = 0, j = 0;
+    for (; i < m_numOfRows; i++) {
+        for (; j < m_numOfCols; j++) {
+            delete array[i][j];
+        }
+        delete a[i];
+    }
+};
+
+//*****************************************************************************************************
 //* function name: getRowsNum
 //* Description: gets number of rows in a mat
 //* Parameters:None
