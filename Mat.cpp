@@ -74,7 +74,7 @@ int Mat::getColumnsNum() const
 //*****************************************************************************************************
 int Mat::getElement(int rowIndex, int colIndex) const
 {
-    if (rowIndex < 0 || colIndex < 0) {
+    if (rowIndex < 1 || colIndex < 1) {
         return -1; //fail
     }
     return array[rowIndex-1][colIndex-1];   //because index starts from 1 (not from 0)
@@ -91,7 +91,7 @@ int Mat::getElement(int rowIndex, int colIndex) const
 
 void Mat::setElement(int rowIndex, int colIndex, int val)
 {
-    if (rowIndex < 0 || colIndex < 0 || rowIndex>m_numOfRows || colIndex>m_numOfCols) {
+    if (rowIndex < 1 || colIndex < 1 || rowIndex>m_numOfRows || colIndex>m_numOfCols) {
         return; //fail
     }
     array[rowIndex - 1][colIndex - 1] = val; //because index starts from 1 (not from 0)

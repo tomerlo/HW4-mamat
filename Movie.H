@@ -21,6 +21,8 @@ public:
 	string getLanguage() const;
 	int getTheaterNum() const;
 	int getTicketPrice() const;
+	BOOL addScreening(int day, int screeningTime);
+	int getNextScreening(int day, int time) const;
 
 private:
 	static int m_ticketPrice;
@@ -31,7 +33,5 @@ private:
 	Mat m_streamingTimesMat(7, MAX_SCREENINGS_PER_DAY);
 
 };
-
-
 
 #endif
