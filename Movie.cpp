@@ -63,7 +63,7 @@ string Movie::getLanguage() const
 //* Return Value: m_theaterNum - int
 //*****************************************************************************************************
 int Movie::getTheaterNum() const
-{
+{	
 	return m_theaterNum;
 };
 
