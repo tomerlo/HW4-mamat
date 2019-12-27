@@ -12,15 +12,17 @@
 class DubbedMovie : public Movie
 {
 public:
-	DubbedMovie(string movieName, int movieLength, string movieLanguage, int theaterNum);
-	~DubbedMovie();
-	BOOL addHebrewScreening() const;
+
+	DubbedMovie(string movieName, int movieLength, string movieLanguage, int theaterNum, int DubbedTheaterNum);
+	BOOL addHebrewScreening(int day, int screeningTime);
 	int getHebrewTheaterNum() const;
-	BOOL getNextHebrewScreening() const;
+	int getNextHebrewScreening(int day, int time) const;
+
 private:
-	int m_numOfRows;
-	int m_numOfCols;
-	int m_TheaterNum;
+
+	int m_TheaterHebrewNum;
+	Mat m_streamingDubbedTimesMat(7, MAX_SCREENINGS_PER_DAY);
+
 };
 
 

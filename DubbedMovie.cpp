@@ -8,9 +8,15 @@
 //* Return Value:None
 //*****************************************************************************************************
 
-DubbedMovie::DubbedMovie(string movieName, int movieLength, string movieLanguage, int theaterNum)
+DubbedMovie::DubbedMovie(string movieName, int movieLength, string movieLanguage, int theaterNum, int DubbedTheaterNum): m_TheaterHebrewNum(DubbedTheaterNum)
 {
     Movie(movieName,movieLength,movieLanguage,theaterNum);
+	int i = 0, j = 0;
+	for (; i < 7; i++) {
+		for (; j < MAX_SCREENINGS_PER_DAY; j++) {
+			m_streamingDubbedTimesMat[i][j] = 0;
+		}
+	}
 };
 
 
@@ -27,7 +33,7 @@ BOOL DubbedMovie::addHebrewScreening(int day, int screeningTime)
 	if (day < 1 || screeningTime < 1 || screeningTime>24) {
 		return FALSE;
 	}
-	if (m_streamingTimesMat[day - 1][MAX_SCREENINGS_PER_DAY - 1] != 0) {
+	if (m_streamingDubbedTimesMat[day - 1][MAX_SCREENINGS_PER_DAY - 1] != 0) {
 		return FALSE; //because it means the day is full of screenings
 	}
 	addScreening(day, screeningTime);
@@ -59,5 +65,5 @@ int DubbedMovie::getNextHebrewScreening(int day, int time) const
 //*****************************************************************************************************
 int DubbedMovie::getHebrewTheaterNum() const
 {
-	return m_theaterNum;
+	return m_TheaterHebrewNum;
 };
