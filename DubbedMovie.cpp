@@ -29,7 +29,7 @@ DubbedMovie::DubbedMovie(string movieName, int movieLength, string movieLanguage
 //*****************************************************************************************************
 BOOL DubbedMovie::addHebrewScreening(int day, int screeningTime)
 {
-	if (day < 1 || screeningTime < 1 || screeningTime>24) {
+	if (day < 1 || day>7 || screeningTime < 1 || screeningTime>24) {
 		return FALSE;
 	}
 	if (m_streamingDubbedTimesMat[day - 1][MAX_SCREENINGS_PER_DAY - 1] != 0) {
@@ -58,7 +58,7 @@ BOOL DubbedMovie::addHebrewScreening(int day, int screeningTime)
 //*****************************************************************************************************
 int DubbedMovie::getNextHebrewScreening(int day, int time) const
 {
-	if (day < 1 || screeningTime < 1 || screeningTime>24) {
+	if (day < 1 || day>7 || screeningTime < 1 || screeningTime>24) {
 		return 0;
 	}
 	int j = 0;

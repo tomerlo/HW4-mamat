@@ -87,7 +87,7 @@ int Movie::getTicketPrice() const
 //*****************************************************************************************************
 BOOL Movie::addScreening(int day, int screeningTime)
 {
-	if (day < 1 || screeningTime < 1 || screeningTime>24) {
+	if (day < 1 || day>7 || screeningTime < 1 || screeningTime>24) {
 		return FALSE;
 	}
 	if (m_streamingTimesMat[day - 1][MAX_SCREENINGS_PER_DAY - 1] != 0) {
@@ -114,7 +114,7 @@ BOOL Movie::addScreening(int day, int screeningTime)
 //*****************************************************************************************************
 int Movie::getNextScreening(int day, int time) const
 {
-	if (day < 1 || screeningTime < 1 || screeningTime>24) {
+	if (day < 1 || day>7 || screeningTime < 1 || screeningTime>24) {
 		return 0;
 	}
 	int j = 0;
