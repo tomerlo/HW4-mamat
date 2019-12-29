@@ -6,24 +6,20 @@
 #include <stdio.h>
 #include <iostream>
 
+
 using namespace std;
 
-
-class Employee
+class Employee 
 {
 public:
 	Employee (string workerName, int workerSalary, string* workHours);
-	getName() const;
-	getSalary() const;
-	calcWeeklySalary() const;
+	string getName() const;
+	int getSalary() const;
+	int calcWeeklySalary() const;
 private:
 	string m_name;
 	int m_salary;
 	string m_workHours[7];
-
-
 };
-
-
 
 #endif
