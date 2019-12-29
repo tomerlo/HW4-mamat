@@ -8,9 +8,9 @@
 //* Return Value:None
 //*****************************************************************************************************
 
-DubbedMovie::DubbedMovie(string movieName, int movieLength, string movieLanguage, int theaterNum, int DubbedTheaterNum): m_TheaterHebrewNum(DubbedTheaterNum)
+DubbedMovie::DubbedMovie(int DubbedTheaterNum): Movie (movieName, movieLength, movieLanguage, theaterNum),
+m_TheaterHebrewNum(DubbedTheaterNum)
 {
-    Movie(movieName,movieLength,movieLanguage,theaterNum);
 	int i = 0, j = 0;
 	for (; i < 7; i++) {
 		for (; j < MAX_SCREENINGS_PER_DAY; j++) {

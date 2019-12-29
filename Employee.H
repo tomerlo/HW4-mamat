@@ -13,7 +13,9 @@ class Employee
 {
 public:
 	Employee (string workerName, int workerSalary, string* workHours);
-
+	getName() const;
+	getSalary() const;
+	calcWeeklySalary() const;
 private:
 	string m_name;
 	int m_salary;
