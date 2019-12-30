@@ -1,14 +1,20 @@
 #include "Mat.H"
 #include "DubbedMovie.H"
+using namespace std;
+
 //*****************************************************************************************************
 //* function name: DubbedMovie
 //* Description: DubbedMovie constructor (initializes the DubbedMovie to zeroes)
-//* Parameters:numOfLines - int
-//*            numOfCols - int
+//* Parameters:movieName - string,
+//*            movieLength - int,
+//*			   movieLanguage - string
+//*			   theaterNum - int
+//*			   DubbedTheaterNum - int
 //* Return Value:None
 //*****************************************************************************************************
 
-DubbedMovie::DubbedMovie(int DubbedTheaterNum): Movie (movieName, movieLength, movieLanguage, theaterNum),
+
+DubbedMovie::DubbedMovie(string movieName, int movieLength, string movieLanguage, int theaterNum, int DubbedTheaterNum): Movie (movieName, movieLength, movieLanguage, theaterNum),
 m_TheaterHebrewNum(DubbedTheaterNum)
 {
 	int i = 0, j = 0;

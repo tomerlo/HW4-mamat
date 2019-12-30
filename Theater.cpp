@@ -9,15 +9,12 @@
 //* Return Value:None
 //*****************************************************************************************************
 
-Theater::Theater(int TheaterNum, int numOfLines, int numOfCols)
+Theater::Theater(int TheaterNum, int numOfLines, int numOfCols): Mat (numOfLines, numOfCols), m_numOfCols(numOfCols),
+m_numOfRows(numOfLines), m_TheaterNum(TheaterNum)
 {
     if (numOfLines < 0 || numOfCols < 0) {
         return;
     }
-    m_numOfCols = numOfCols;
-    m_numOfRows = numOfLines;
-    Mat(numOfLines, numOfCols);
-    m_TheaterNum = TheaterNum;
     int i = 0;
     for (; i < m_numOfRows; ++i) {
         int j = 0;
