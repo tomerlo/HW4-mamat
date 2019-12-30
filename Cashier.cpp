@@ -35,5 +35,7 @@ int Cashier::getTicketProfit() const
 
 int Cashier::sellTickets(Movie* pmovie, Theater* ptheater, BOOL isDubbed, int numOfTickets, int wantedRow, int mostRightCol)
 {
+	if (pmovie->getTheaterNum != ptheater->getTheaterNum)
+		return 0;
 
 }

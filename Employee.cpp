@@ -48,15 +48,20 @@ int Employee::getSalary() const
 //*****************************************************************************************************
 
 int Employee::calcWeeklySalary() const
-{
+{	
+	using namespace std;
+	string StartHour;
+	string EndHour;
+	int StartHourAsInt;
+	int EndHourAsInt;
 	int Salary=0;
 	int i;
 	for (i = 0; i < 7;i++) {
 		StartHour = strtok(m_workHours[i], "-");
-		EndHour = strtok(NULL, "=");
+		EndHour = strtok(NULL, "-");
 		StartHourAsInt = atoi(StartHour);
 		EndHourAsInt = atoi(EndHour);
-		Salary = Salary + (EndHourAsInt-StartHourAsInt)* m_salary
+		Salary = Salary + ((EndHourAsInt - StartHourAsInt) * m_salary);
 	}
 	return Salary;
 }
