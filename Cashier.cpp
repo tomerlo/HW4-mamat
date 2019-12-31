@@ -38,13 +38,13 @@ int Cashier::getTicketProfit() const
 int Cashier::sellTickets(Movie* pmovie, Theater* ptheater, BOOL isDubbed, int numOfTickets, int wantedRow, int mostRightCol)
 {
 	if (pmovie == NULL || ptheater==NULL || numOfTickets<=0 || wantedRow<0|| wantedRow>ptheater->getRowsNum ||
-		mostRightCol<0 || mostRightCol-numOfTickets<0 || pmovie->getTheaterNum != ptheater->getTheaterNum)
+		mostRightCol<0 || mostRightCol-numOfTickets<0)
 		return 0;
-	if (isDubbed == TRUE) {
-		//DubbedMovie dMovie(pmovie ->getName, pmovie->getLength, pmovie->getLanguage, pmovie->getTheaterNum, ptheater->getTheaterNum);
-		//DubbedMovie* pdmovie;
-		//pmovie = &pdmovie;
+	else if (isDubbed == TRUE) {
 		DubbedMovie* pdmovie = dynamic_cast<DubbedMovie*>(pmovie);
+		if (pdmovie->getTheaterNum != ptheater->getTheaterNum && pdmovie->getHebrewTheaterNum != ptheater->getTheaterNum) {
+			return 0;
+		}
 		int colIndexToStart = mostRightCol;
 		int colIndexToStop = mostRightCol - numOfTickets;
 		for (; colIndexToStart--; colIndexToStart >= colIndexToStop) {//to yaniv - don't know which theater to use and how
@@ -60,6 +60,9 @@ int Cashier::sellTickets(Movie* pmovie, Theater* ptheater, BOOL isDubbed, int nu
 		return ((pmovie->getTicketPrice) * numOfTickets);
 	}
 	else {
+		if (pmovie->getTheaterNum != ptheater->getTheaterNum) {
+			return 0;
+		}
 		int colIndexToStart = mostRightCol;
 		int colIndexToStop = mostRightCol - numOfTickets;
 		for (; colIndexToStart--; colIndexToStart >= colIndexToStop) {//to yaniv - don't know which theater to use and how
