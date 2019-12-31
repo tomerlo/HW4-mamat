@@ -56,8 +56,8 @@ int Cashier::sellTickets(Movie* pmovie, Theater* ptheater, BOOL isDubbed, int nu
 		for (; colIndexToStart--; colIndexToStart >= colIndexToStop) {
 			ptheater->setElement(wantedRow, colIndexToStart, TAKEN);
 		}
-		m_ticketProfit = m_ticketProfit + ((pmovie->getTicketPrice) * numOfTickets);
-		return ((pmovie->getTicketPrice) * numOfTickets);
+		m_ticketProfit = m_ticketProfit + ((pdmovie->getTicketPrice) * numOfTickets);
+		return ((pdmovie->getTicketPrice) * numOfTickets);
 	}
 	else {
 		if (pmovie->getTheaterNum != ptheater->getTheaterNum) {
