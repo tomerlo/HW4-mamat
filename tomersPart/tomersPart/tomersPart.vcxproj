@@ -138,12 +138,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Desktop\mamat\visual_studio\targil4\givenFiles\Proj.H" />
+    <ClInclude Include="..\..\Proj.H" />
     <ClInclude Include="Mat.H" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Desktop\mamat\visual_studio\targil4\givenFiles\main.C" />
-    <ClCompile Include="Mat.C" />
+    <ClCompile Include="..\..\main.C" />
+    <ClCompile Include="Mat.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
