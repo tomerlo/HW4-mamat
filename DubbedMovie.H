@@ -21,7 +21,7 @@ public:
 private:
 
 	int m_TheaterHebrewNum;
-	Mat m_streamingDubbedTimesMat(7, MAX_SCREENINGS_PER_DAY);
+	Mat m_streamingDubbedTimesMat;
 
 };
 

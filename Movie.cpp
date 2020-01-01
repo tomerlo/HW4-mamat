@@ -10,8 +10,8 @@
 //* Return Value: None
 //*****************************************************************************************************
 
-Movie::Movie(string movieName, int movieLength, string movieLanguage, int theaterNum) : m_ticketPrice(35),
-m_movieLength(movieLength), m_theaterNum(theaterNum)
+Movie::Movie(string movieName, int movieLength, string movieLanguage, int theaterNum) : m_streamingTimesMat(7, MAX_SCREENINGS_PER_DAY),
+m_ticketPrice(35), m_movieLength(movieLength), m_theaterNum(theaterNum)
 {
 	strcpy(m_movieName, movieName);
 	strcpy(m_movieLanguage, movieLanguage);

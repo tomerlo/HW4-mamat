@@ -29,7 +29,7 @@ private:
 	int m_movieLength; //in minutes
 	string m_movieLanguage;
 	int m_theaterNum; //we assume that in one theater there is only one movie per week
-	Mat m_streamingTimesMat(7, MAX_SCREENINGS_PER_DAY);
+	Mat m_streamingTimesMat;
 
 };
 
