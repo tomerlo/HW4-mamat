@@ -9,10 +9,11 @@
 //*			   theaterNum - int
 //* Return Value: None
 //*****************************************************************************************************
-
-Movie::Movie(string movieName, int movieLength, string movieLanguage, int theaterNum) : 
-m_ticketPrice(35), m_movieLength(movieLength), m_theaterNum(theaterNum)
+using namespace std;
+Movie::Movie(char* movieName, int movieLength, char* movieLanguage, int theaterNum) :
+	 m_movieLength(movieLength), m_theaterNum(theaterNum)
 {
+	m_ticketPrice = 35;
 	m_streamingTimesMat =new Mat(7, MAX_SCREENINGS_PER_DAY);
 	strcpy(m_movieName, movieName);
 	strcpy(m_movieLanguage, movieLanguage);
@@ -31,7 +32,7 @@ Movie::~Movie(){}
 //* Parameters:None
 //* Return Value: m_movieName - string
 //*****************************************************************************************************
-string Movie::getName() const
+char* Movie::getName() const
 {
 	return m_movieName;
 };
@@ -53,7 +54,7 @@ int Movie::getLength() const
 //* Parameters:None
 //* Return Value: m_movieLanguage - string
 //*****************************************************************************************************
-string Movie::getLanguage() const
+char* Movie::getLanguage() const
 {
 	return m_movieLanguage;
 };
@@ -75,7 +76,7 @@ int Movie::getTheaterNum() const
 //* Parameters:None
 //* Return Value: m_ticketPrice - int
 //*****************************************************************************************************
-static int Movie::getTicketPrice()
+int Movie::getTicketPrice()
 {
 	return m_ticketPrice;
 };

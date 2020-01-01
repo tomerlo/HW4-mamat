@@ -12,14 +12,14 @@ using namespace std;
 class Employee 
 {
 public:
-	Employee (string workerName, int workerSalary, char* workHours[7]);
-	string getName() const;
+	Employee (char* workerName, int workerSalary, char* workHours[7]);
+	char* getName() const;
 	int getSalary() const;
 	int calcWeeklySalary() const;
 private:
-	string m_name;
+	char* m_name;
 	int m_salary;
-	string* m_workHoursBegin;
+	char* m_workHoursBegin;
 };
 
 #endif

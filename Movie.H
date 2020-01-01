@@ -13,11 +13,11 @@ using namespace std;
 class Movie
 {
 public:
-	Movie(string movieName, int movieLength, string movieLanguage, int theaterNum);
+	Movie(char* movieName, int movieLength, char* movieLanguage, int theaterNum);
 	virtual ~Movie(); //polymorphic type
-	string getName() const;
+	char* getName() const;
 	int getLength() const;
-	string getLanguage() const;
+	char* getLanguage() const;
 	int getTheaterNum() const;
 	static int getTicketPrice();
 	BOOL addScreening(int day, int screeningTime);
@@ -25,9 +25,9 @@ public:
 
 private:
 	static int m_ticketPrice;
-	string m_movieName;
+	char* m_movieName;
 	int m_movieLength; //in minutes
-	string m_movieLanguage;
+	char* m_movieLanguage;
 	int m_theaterNum; //we assume that in one theater there is only one movie per week
 	Mat *m_streamingTimesMat;
 

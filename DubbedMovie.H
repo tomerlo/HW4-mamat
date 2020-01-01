@@ -13,7 +13,7 @@ class DubbedMovie : public Movie
 {
 public:
 
-	DubbedMovie(string movieName, int movieLength, string movieLanguage, int theaterNum, int DubbedTheaterNum);
+	DubbedMovie(char* movieName, int movieLength, char* movieLanguage, int theaterNum, int DubbedTheaterNum);
 	BOOL addHebrewScreening(int day, int screeningTime);
 	int getHebrewTheaterNum() const;
 	int getNextHebrewScreening(int day, int time) const;

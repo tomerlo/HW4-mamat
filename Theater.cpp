@@ -18,7 +18,7 @@ Theater::Theater(int TheaterNum, int numOfLines, int numOfCols)
     int i = 0;
     for (; i < m_numOfRows; ++i) {
         int j = 0;
-        for (; j++; j < m_numOfCols) {
+        for (; j++; (j < m_numOfCols)) {
             setElement(i, j, FREE);
         }
     }
@@ -58,7 +58,7 @@ void Theater::Reset()
     int i = 0;
     for (; i < m_numOfRows; ++i) {
         int j = 0;
-        for (; j++; j < m_numOfCols) {
+        for (; j++; (j < m_numOfCols)) {
             setElement(i, j, FREE);
         }
     }

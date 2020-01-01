@@ -14,7 +14,7 @@ using namespace std;
 //*****************************************************************************************************
 
 
-DubbedMovie::DubbedMovie(string movieName, int movieLength, string movieLanguage, int theaterNum, int DubbedTheaterNum): Movie (movieName, movieLength, movieLanguage, theaterNum),
+DubbedMovie::DubbedMovie(char* movieName, int movieLength, char* movieLanguage, int theaterNum, int DubbedTheaterNum): Movie (movieName, movieLength, movieLanguage, theaterNum),
  m_TheaterHebrewNum(DubbedTheaterNum)
 {
 	m_streamingDubbedTimesMat = new Mat(7, MAX_SCREENINGS_PER_DAY);

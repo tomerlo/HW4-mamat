@@ -9,7 +9,7 @@
 //* Return Value:None
 //*****************************************************************************************************
 
-Cashier::Cashier(string workerName, int workerSalary, char* workHours[7]) : Employee (workerName, workerSalary, workHours), m_ticketProfit(0){}
+Cashier::Cashier(char* workerName, int workerSalary, char* workHours[7]) : Employee (workerName, workerSalary, workHours), m_ticketProfit(0){}
 
 //*****************************************************************************************************
 //* function name: getTicketProfit

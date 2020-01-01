@@ -8,6 +8,8 @@
 //* Return Value:None
 //*****************************************************************************************************
 
+Mat::Mat(){}
+
 Mat::Mat(int numOfLines, int numOfCols)
 {
     m_numOfCols = numOfCols;

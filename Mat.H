@@ -9,6 +9,7 @@
 class Mat
 {
 public:
+	Mat();
 	Mat(int numOfLines, int numOfCols);
 	~Mat();
 	int getRowsNum() const;
