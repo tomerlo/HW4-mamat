@@ -20,7 +20,7 @@ Mat::Mat(int numOfLines, int numOfCols)
     for (; i < m_numOfRows; ++i) {
         array[i] = new int[m_numOfCols];
         int j = 0;
-        for (; j++; j < m_numOfCols) {
+        for (;  j < m_numOfCols;j++) {
             array[i][j] = 0;
         }
     }
@@ -39,7 +39,7 @@ Mat::~Mat()
         for (; j < m_numOfCols; j++) {
             delete array[i][j];
         }
-        delete a[i];
+        delete array[i];
     }
 };
 

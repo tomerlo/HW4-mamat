@@ -40,7 +40,7 @@
 
 #define MAX_LINE_SIZE 255
 
-using namespace std
+using namespace std;
 
 int main() {
 	int i;

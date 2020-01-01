@@ -13,7 +13,7 @@
 class Cashier : public Employee
 {
 public:
-	Cashier(string workerName, int workerSalary, string* workHours);
+	Cashier(string workerName, int workerSalary, char* workHours[7]);
 	int getTicketProfit() const;
 	int sellTickets(Movie* pmovie, Theater* ptheater, BOOL isDubbed, int numOfTickets, int wantedRow, int mostRightCol);
 

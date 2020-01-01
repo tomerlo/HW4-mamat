@@ -9,10 +9,9 @@
 //*				workHours - string*
 //* Return Value:None
 //*****************************************************************************************************
-Employee::Employee(string workerName, int workerSalary, string* workHours) : m_salary(workerSalary)
+Employee::Employee(string workerName, int workerSalary, char* workHours[7]) : m_salary(workerSalary), m_workHoursBegin (&workHours[0])
 {
 	strcpy(m_name, workerName);
-	m_workHours = workHours;
 };
 
 //*****************************************************************************************************
