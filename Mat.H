@@ -19,6 +19,7 @@ public:
 private:
 	int m_numOfRows;
 	int m_numOfCols;
+	int** m_array;
 };
 
 

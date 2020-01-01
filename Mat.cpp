@@ -15,13 +15,13 @@ Mat::Mat(int numOfLines, int numOfCols)
     }
     m_numOfCols = numOfCols;
     m_numOfRows = numOfLines;
-    int** array = new int* [m_numOfRows];
+    m_array = new int* [m_numOfRows];
     int i = 0;
     for (; i < m_numOfRows; ++i) {
-        array[i] = new int[m_numOfCols];
+        m_array[i] = new int[m_numOfCols];
         int j = 0;
         for (;  j < m_numOfCols;j++) {
-            array[i][j] = 0;
+            m_array[i][j] = 0;
         }
     }
 };
@@ -36,11 +36,9 @@ Mat::~Mat()
 {
     int i = 0, j = 0;
     for (; i < m_numOfRows; i++) {
-        for (; j < m_numOfCols; j++) {
-            delete array[i][j];
-        }
-        delete array[i];
+        delete m_array[i];
     }
+    delete m_array;
 };
 
 //*****************************************************************************************************
@@ -77,7 +75,7 @@ int Mat::getElement(int rowIndex, int colIndex) const
     if (rowIndex < 1 || colIndex < 1) {
         return -1; //fail
     }
-    return array[rowIndex-1][colIndex-1];   //because index starts from 1 (not from 0)
+    return m_array[rowIndex-1][colIndex-1];   //because index starts from 1 (not from 0)
 };
 
 //*****************************************************************************************************
@@ -94,6 +92,6 @@ void Mat::setElement(int rowIndex, int colIndex, int val)
     if (rowIndex < 1 || colIndex < 1 || rowIndex>m_numOfRows || colIndex>m_numOfCols) {
         return; //fail
     }
-    array[rowIndex - 1][colIndex - 1] = val; //because index starts from 1 (not from 0)
+    m_array[rowIndex - 1][colIndex - 1] = val; //because index starts from 1 (not from 0)
     return;
 };

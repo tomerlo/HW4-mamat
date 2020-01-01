@@ -73,7 +73,7 @@ int Movie::getTheaterNum() const
 //* Parameters:None
 //* Return Value: m_ticketPrice - int
 //*****************************************************************************************************
-int Movie::getTicketPrice() const
+static int Movie::getTicketPrice()
 {
 	return m_ticketPrice;
 };

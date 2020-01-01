@@ -19,7 +19,7 @@ public:
 	int getLength() const;
 	string getLanguage() const;
 	int getTheaterNum() const;
-	int getTicketPrice() const;
+	static int getTicketPrice();
 	BOOL addScreening(int day, int screeningTime);
 	int getNextScreening(int day, int time) const;
 
