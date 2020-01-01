@@ -1,5 +1,5 @@
 #include "Mat.H"
-
+#include "Proj.H"
 //*****************************************************************************************************
 //* function name: Mat
 //* Description: Mat constructor (initializes the mat to zeroes)
@@ -7,12 +7,10 @@
 //*            numOfCols - int
 //* Return Value:None
 //*****************************************************************************************************
-
+using namespace std;
 Mat::Mat(int numOfLines, int numOfCols)
 {
-    if (numOfLines < 0 || numOfCols < 0) {
-        return;
-    }
+
     m_numOfCols = numOfCols;
     m_numOfRows = numOfLines;
     m_array = new int* [m_numOfRows];

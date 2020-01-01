@@ -12,7 +12,6 @@ using namespace std;
 
 class Movie
 {
-
 public:
 	Movie(string movieName, int movieLength, string movieLanguage, int theaterNum);
 	string getName() const;

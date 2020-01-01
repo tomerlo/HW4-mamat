@@ -9,12 +9,12 @@
 //* Return Value:None
 //*****************************************************************************************************
 
-Theater::Theater(int TheaterNum, int numOfLines, int numOfCols): Mat (numOfLines, numOfCols), m_numOfCols(numOfCols),
-m_numOfRows(numOfLines), m_TheaterNum(TheaterNum)
+Theater::Theater(int TheaterNum, int numOfLines, int numOfCols)
 {
-    if (numOfLines < 0 || numOfCols < 0) {
-        return;
-    }
+    m_TheaterNum = TheaterNum;
+    m_numOfRows = numOfLines;
+    m_numOfCols = numOfCols;
+    Mat(numOfLines, numOfCols);
     int i = 0;
     for (; i < m_numOfRows; ++i) {
         int j = 0;
@@ -22,7 +22,7 @@ m_numOfRows(numOfLines), m_TheaterNum(TheaterNum)
             setElement(i, j, FREE);
         }
     }
-};
+}
 
 //*****************************************************************************************************
 //* function name: ~Theater
@@ -45,7 +45,7 @@ Theater::~Theater()
 int Theater::getTheaterNum() const
 {
     return m_TheaterNum;
-};
+}
 
 //*****************************************************************************************************
 //* function name: Reset
@@ -62,5 +62,4 @@ void Theater::Reset()
             setElement(i, j, FREE);
         }
     }
-    return;
-};
+}

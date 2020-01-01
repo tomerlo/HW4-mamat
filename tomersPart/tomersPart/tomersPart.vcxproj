@@ -140,10 +140,20 @@
   <ItemGroup>
     <ClInclude Include="..\..\Proj.H" />
     <ClInclude Include="..\..\Mat.H" />
+    <ClInclude Include="..\..\Cashier.H" />
+    <ClInclude Include="..\..\DubbedMovie.H" />
+    <ClInclude Include="..\..\Employee.H" />
+    <ClInclude Include="..\..\Movie.H" />
+    <ClInclude Include="..\..\Theater.H" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\main.cpp" />
     <ClCompile Include="..\..\Mat.cpp" />
+    <ClCompile Include="..\..\Cashier.cpp" />
+    <ClCompile Include="..\..\DubbedMovie.cpp" />
+    <ClCompile Include="..\..\Employee.cpp" />
+    <ClCompile Include="..\..\Movie.cpp" />
+    <ClCompile Include="..\..\Theater.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

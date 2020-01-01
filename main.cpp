@@ -46,7 +46,6 @@ using namespace std;
 
 int main() {
 	int i;
-	
 
 	///// parser //////////////////////
   char szLine[MAX_LINE_SIZE];

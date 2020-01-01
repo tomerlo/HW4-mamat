@@ -88,7 +88,7 @@ int DubbedMovie::getNextHebrewScreening(int day, int time) const
 
 
 //*****************************************************************************************************
-//* function name: getTheaterNum
+//* function name: 
 //* Description: gets movie theater number
 //* Parameters:None
 //* Return Value: m_theaterNum - int
