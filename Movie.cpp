@@ -10,9 +10,10 @@
 //* Return Value: None
 //*****************************************************************************************************
 
-Movie::Movie(string movieName, int movieLength, string movieLanguage, int theaterNum) : m_streamingTimesMat(7, MAX_SCREENINGS_PER_DAY),
+Movie::Movie(string movieName, int movieLength, string movieLanguage, int theaterNum) : 
 m_ticketPrice(35), m_movieLength(movieLength), m_theaterNum(theaterNum)
 {
+	m_streamingTimesMat =new Mat(7, MAX_SCREENINGS_PER_DAY);
 	strcpy(m_movieName, movieName);
 	strcpy(m_movieLanguage, movieLanguage);
 	int i = 0, j = 0;
@@ -23,6 +24,7 @@ m_ticketPrice(35), m_movieLength(movieLength), m_theaterNum(theaterNum)
 	}
 };
 
+Movie::~Movie(){}
 //*****************************************************************************************************
 //* function name: getName
 //* Description: gets movie name

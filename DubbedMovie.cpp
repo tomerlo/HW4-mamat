@@ -15,14 +15,9 @@ using namespace std;
 
 
 DubbedMovie::DubbedMovie(string movieName, int movieLength, string movieLanguage, int theaterNum, int DubbedTheaterNum): Movie (movieName, movieLength, movieLanguage, theaterNum),
-m_streamingDubbedTimesMat(7, MAX_SCREENINGS_PER_DAY), m_TheaterHebrewNum(DubbedTheaterNum)
+ m_TheaterHebrewNum(DubbedTheaterNum)
 {
-	int i = 0, j = 0;
-	for (; i < 7; i++) {
-		for (; j < MAX_SCREENINGS_PER_DAY; j++) {
-			m_streamingDubbedTimesMat[i][j] = 0;
-		}
-	}
+	m_streamingDubbedTimesMat = new Mat(7, MAX_SCREENINGS_PER_DAY);
 };
 
 
@@ -38,18 +33,19 @@ BOOL DubbedMovie::addHebrewScreening(int day, int screeningTime)
 	if (day < 1 || day>7 || screeningTime < 1 || screeningTime>24) {
 		return FALSE;
 	}
-	if (m_streamingDubbedTimesMat[day - 1][MAX_SCREENINGS_PER_DAY - 1] != 0) {
+	if (m_streamingDubbedTimesMat->getElement(day - 1, MAX_SCREENINGS_PER_DAY - 1) != 0) {
 		return FALSE; //because it means the day is full of screenings
 	}
 	int j = 0;
-	for (; j < MAX_SCREENINGS_PER_DAY && m_streamingDubbedTimesMat[day - 1][j] != 0; j++) {//check if
+	for (; j < MAX_SCREENINGS_PER_DAY && (m_streamingDubbedTimesMat->getElement(day - 1,j)) != 0; j++) 
+	{//check if
 		//there is a screening in the same day which haven't finished yet
-		if (m_streamingDubbedTimesMat[day - 1][j] + m_movieLength > screeningTime) { //found a movie which haven't finished yet 
+		if (m_streamingDubbedTimesMat->getElement(day - 1, j) + getLength() > screeningTime) { //found a movie which haven't finished yet 
 			return FALSE;
 		}
 	}
 	//if we reached here it means we found an empty place and all previous screenings have finished already
-	m_streamingDubbedTimesMat[day - 1][j] = screeningTime; //put it in the mat
+	m_streamingDubbedTimesMat->setElement(day - 1, j, screeningTime); //put it in the mat
 	return TRUE;
 };
 
@@ -64,13 +60,13 @@ BOOL DubbedMovie::addHebrewScreening(int day, int screeningTime)
 //*****************************************************************************************************
 int DubbedMovie::getNextHebrewScreening(int day, int time) const
 {
-	if (day < 1 || day>7 || screeningTime < 1 || screeningTime>24) {
+	if (day < 1 || day>7 || time < 1 || time>24) {
 		return 0;
 	}
 	int j = 0;
 	for (; j < MAX_SCREENINGS_PER_DAY; j++) {
-		if (m_streamingDubbedTimesMat[day - 1][j] != 0 &&
-			(m_streamingDubbedTimesMat[day - 1][j] < time || m_streamingDubbedTimesMat[day - 1][j] + m_movieLength < time)) {
+		if (m_streamingDubbedTimesMat->getElement(day - 1, j) != 0 &&
+			(m_streamingDubbedTimesMat->getElement(day - 1, j) < time || m_streamingDubbedTimesMat->getElement(day - 1, j) + getLength() < time)) {
 			continue; //current screening was started or finished already
 		}
 		break; //found a screening which haven't started yet or reached a 0 in m_streamingTimesMat
@@ -78,11 +74,11 @@ int DubbedMovie::getNextHebrewScreening(int day, int time) const
 	if (j == MAX_SCREENINGS_PER_DAY) {//means all movies were started or finished before 'time'
 		return 0;
 	}
-	else if (m_streamingDubbedTimesMat[day - 1][j] == 0) {//means all screening times available are in the past
+	else if (m_streamingDubbedTimesMat->getElement(day - 1, j) == 0) {//means all screening times available are in the past
 		return 0;
 	}
 	else {
-		return m_streamingDubbedTimesMat[day - 1][j]; //valid next screening time
+		return m_streamingDubbedTimesMat->getElement(day - 1, j); //valid next screening time
 	}
 };
 

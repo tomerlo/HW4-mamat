@@ -37,44 +37,44 @@ int Cashier::getTicketProfit() const
 
 int Cashier::sellTickets(Movie* pmovie, Theater* ptheater, BOOL isDubbed, int numOfTickets, int wantedRow, int mostRightCol)
 {
-	if (pmovie == NULL || ptheater==NULL || numOfTickets<=0 || wantedRow<0|| wantedRow>ptheater->getRowsNum ||
+	if (pmovie == NULL || ptheater==NULL || numOfTickets<=0 || wantedRow<0|| wantedRow>ptheater->getRowsNum() ||
 		mostRightCol<0 || mostRightCol-numOfTickets<0)
 		return 0;
 	else if (isDubbed == TRUE) {
 		DubbedMovie* pdmovie = dynamic_cast<DubbedMovie*>(pmovie);
-		if (pdmovie->getTheaterNum != ptheater->getTheaterNum && pdmovie->getHebrewTheaterNum != ptheater->getTheaterNum) {
+		if (pdmovie->getTheaterNum() != ptheater->getTheaterNum() && pdmovie->getHebrewTheaterNum() != ptheater->getTheaterNum()) {
 			return 0;
 		}
 		int colIndexToStart = mostRightCol;
 		int colIndexToStop = mostRightCol - numOfTickets;
-		for (; colIndexToStart--; colIndexToStart >= colIndexToStop) {//to yaniv - don't know which theater to use and how
+		for (; colIndexToStart--; (colIndexToStart >= colIndexToStop)) {//to yaniv - don't know which theater to use and how
 			if (ptheater->getElement(wantedRow, colIndexToStart) != FREE) {
 				return 0;
 			}
 		}
 		colIndexToStart = mostRightCol;
-		for (; colIndexToStart--; colIndexToStart >= colIndexToStop) {
+		for (; colIndexToStart--; (colIndexToStart >= colIndexToStop)) {
 			ptheater->setElement(wantedRow, colIndexToStart, TAKEN);
 		}
-		m_ticketProfit = m_ticketProfit + ((pdmovie->getTicketPrice) * numOfTickets);
-		return ((pdmovie->getTicketPrice) * numOfTickets);
+		m_ticketProfit = m_ticketProfit + ((pdmovie->getTicketPrice()) * numOfTickets);
+		return ((pdmovie->getTicketPrice()) * numOfTickets);
 	}
 	else {
-		if (pmovie->getTheaterNum != ptheater->getTheaterNum) {
+		if (pmovie->getTheaterNum() != ptheater->getTheaterNum()) {
 			return 0;
 		}
 		int colIndexToStart = mostRightCol;
 		int colIndexToStop = mostRightCol - numOfTickets;
-		for (; colIndexToStart--; colIndexToStart >= colIndexToStop) {//to yaniv - don't know which theater to use and how
+		for (; colIndexToStart--; (colIndexToStart >= colIndexToStop)) {//to yaniv - don't know which theater to use and how
 			if (ptheater->getElement(wantedRow, colIndexToStart) != FREE) {
 				return 0;
 			}
 		}
 		colIndexToStart = mostRightCol;
-		for (; colIndexToStart--; colIndexToStart >= colIndexToStop) {
+		for (; colIndexToStart--; (colIndexToStart >= colIndexToStop)) {
 			ptheater->setElement(wantedRow, colIndexToStart, TAKEN);
 		}
-		m_ticketProfit = m_ticketProfit + ((pmovie->getTicketPrice) * numOfTickets);
-		return ((pmovie->getTicketPrice) * numOfTickets);
+		m_ticketProfit = m_ticketProfit + ((pmovie->getTicketPrice()) * numOfTickets);
+		return ((pmovie->getTicketPrice()) * numOfTickets);
 	}
 }

@@ -7,10 +7,9 @@
 //*            numOfCols - int
 //* Return Value:None
 //*****************************************************************************************************
-using namespace std;
+
 Mat::Mat(int numOfLines, int numOfCols)
 {
-
     m_numOfCols = numOfCols;
     m_numOfRows = numOfLines;
     m_array = new int* [m_numOfRows];

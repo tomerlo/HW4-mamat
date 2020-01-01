@@ -14,6 +14,7 @@ class Movie
 {
 public:
 	Movie(string movieName, int movieLength, string movieLanguage, int theaterNum);
+	virtual ~Movie(); //polymorphic type
 	string getName() const;
 	int getLength() const;
 	string getLanguage() const;
@@ -28,7 +29,7 @@ private:
 	int m_movieLength; //in minutes
 	string m_movieLanguage;
 	int m_theaterNum; //we assume that in one theater there is only one movie per week
-	Mat m_streamingTimesMat;
+	Mat *m_streamingTimesMat;
 
 };
 

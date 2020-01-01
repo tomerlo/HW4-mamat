@@ -21,7 +21,7 @@ public:
 private:
 
 	int m_TheaterHebrewNum;
-	Mat m_streamingDubbedTimesMat;
+	Mat *m_streamingDubbedTimesMat;
 
 };
 
