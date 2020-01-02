@@ -19,7 +19,7 @@ public:
 private:
 	char* m_name;
 	int m_salary;
-	char* m_workHoursBegin;
+	char* m_workHoursBegin [7];
 };
 
 #endif

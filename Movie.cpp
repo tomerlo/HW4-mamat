@@ -20,12 +20,22 @@ Movie::Movie(char* movieName, int movieLength, char* movieLanguage, int theaterN
 	int i = 0, j = 0;
 	for (; i < 7; i++) {
 		for (; j < MAX_SCREENINGS_PER_DAY; j++) {
-			m_streamingTimesMat[i][j] = 0;
+			m_streamingTimesMat->setElement(i, j, 0);
 		}
 	}
 };
 
-Movie::~Movie(){}
+//*****************************************************************************************************
+//* function name: ~Movie
+//* Description: Movie destructor
+//* Parameters:None
+//* Return Value: None
+//*****************************************************************************************************
+Movie::~Movie()
+{
+	delete m_streamingTimesMat;
+};
+
 //*****************************************************************************************************
 //* function name: getName
 //* Description: gets movie name
@@ -93,18 +103,18 @@ BOOL Movie::addScreening(int day, int screeningTime)
 	if (day < 1 || day>7 || screeningTime < 1 || screeningTime>24) {
 		return FALSE;
 	}
-	if (m_streamingTimesMat[day - 1][MAX_SCREENINGS_PER_DAY - 1] != 0) {
-		return FALSE; //because it means the day is full of screenings
+	if (m_streamingTimesMat->getElement(day, MAX_SCREENINGS_PER_DAY) != 0) {
+		return FALSE; //because it means the day is full of screenings already
 	}
 	int j = 0;
-	for (; j < MAX_SCREENINGS_PER_DAY && m_streamingTimesMat[day - 1][j] != 0; j++) {//check if
+	for (; j < MAX_SCREENINGS_PER_DAY && m_streamingTimesMat->getElement(day, j) != 0; j++) {//check if
 		//there is a screening in the same day which haven't finished yet
-		if (m_streamingTimesMat[day - 1][j] + m_movieLength > screeningTime) { //found a movie which haven't finished yet 
+		if (m_streamingTimesMat->getElement(day, j) + getLength() > screeningTime) { //found a movie which haven't finished yet 
 			return FALSE;
 		}
 	}
 	//if we reached here it means we found an empty place and all previous screenings have finished already
-	m_streamingTimesMat[day - 1][j] = screeningTime; //put it in the mat
+	m_streamingTimesMat->setElement(day,j, screeningTime); //put it in the mat
 	return TRUE;
 };
 
@@ -117,13 +127,13 @@ BOOL Movie::addScreening(int day, int screeningTime)
 //*****************************************************************************************************
 int Movie::getNextScreening(int day, int time) const
 {
-	if (day < 1 || day>7 || screeningTime < 1 || screeningTime>24) {
+	if (day < 1 || day>7 || time < 1 || time>24) {
 		return 0;
 	}
 	int j = 0;
 	for (; j < MAX_SCREENINGS_PER_DAY; j++) {
-		if (m_streamingTimesMat[day - 1][j] != 0 &&
-			(m_streamingTimesMat[day - 1][j] < time || m_streamingTimesMat[day - 1][j] + m_movieLength < time)) {
+		if (m_streamingTimesMat->getElement(day, j) != 0 &&
+			(m_streamingTimesMat->getElement(day, j) <= time || m_streamingTimesMat->getElement(day, j) + getLength() <= time)) {
 			continue; //current screening was started or finished already
 		}
 		break; //found a screening which haven't started yet or reached a 0 in m_streamingTimesMat
@@ -131,10 +141,10 @@ int Movie::getNextScreening(int day, int time) const
 	if (j == MAX_SCREENINGS_PER_DAY) {//means all movies were started or finished before 'time'
 		return 0;
 	}
-	else if (m_streamingTimesMat[day - 1][j] == 0) {//means all screening times available are in the past
+	else if (m_streamingTimesMat->getElement(day, j) == 0 && m_streamingTimesMat->getElement(day, j) <= time) {//means all screening times available are in the past
 		return 0;
 	}
 	else {
-		return m_streamingTimesMat[day - 1][j]; //valid next screening time
+		return m_streamingTimesMat->getElement(day, j); //valid next screening time
 	}
 };

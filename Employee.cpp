@@ -9,8 +9,12 @@
 //*				workHours - string*
 //* Return Value:None
 //*****************************************************************************************************
-Employee::Employee(char* workerName, int workerSalary, char* workHours[7]) : m_salary(workerSalary), m_workHoursBegin (workHours[0])
+Employee::Employee(char* workerName, int workerSalary, char* workHours[7]) : m_salary(workerSalary)
 {
+	int i = 0;
+	for (; i < 7; i++) {
+		m_workHoursBegin[i] = workHours[i];
+	}
 	strcpy(m_name, workerName);
 };
 
@@ -56,7 +60,7 @@ int Employee::calcWeeklySalary() const
 	int Salary=0;
 	int i;
 	for (i = 0; i < 7;i++) {
-		StartHour = strtok(&m_workHoursBegin[i], "-");
+		StartHour = strtok(m_workHoursBegin[i], "-");
 		EndHour = strtok(NULL, "-");
 		StartHourAsInt = atoi(StartHour);
 		EndHourAsInt = atoi(EndHour);
